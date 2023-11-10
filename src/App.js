@@ -10,7 +10,7 @@ const App = () => {
     setSelectedCountry(country);
   };
   return (
-    <BrowserRouter basename='/flareflashfeed.netlify.app'>
+    <BrowserRouter basename='/newslake.vercel.app/'>
       <div>
         <Navbar country={selectedCountry} onCountryChange={handleCountryChange} />
         <Routes>
