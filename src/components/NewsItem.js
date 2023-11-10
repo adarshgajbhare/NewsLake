@@ -4,29 +4,27 @@ import Button from '@mui/material/Button';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-const NewsItem = (props) => {
 
+const NewsItem = (props) => {
     const [showAlert, setShowAlert] = useState(false);
+    const [iconChanged, setIconChanged] = useState(false);
+    const [isVibrating, setIsVibrating] = useState(false);
+
     const CopyUrl = () => {
-        navigator.clipboard.writeText(props.url)
+        navigator.clipboard
+            .writeText(props.url)
             .then(() => {
                 console.log('URL copied to clipboard: ' + props.url);
-
             })
-            .catch(err => {
+            .catch((err) => {
                 console.error('Failed to copy: ', err);
-
             });
         setShowAlert(true);
         setTimeout(() => {
             setShowAlert(false);
         }, 1000);
-    }
+    };
 
-    let { title, description, imgUrl, url } = props;
-
-    const [iconChanged, setIconChanged] = useState(false);
-    const [isVibrating, setIsVibrating] = useState(false);
     const handleClick = () => {
         setIconChanged(!iconChanged);
         setIconChanged(!iconChanged);
@@ -34,46 +32,50 @@ const NewsItem = (props) => {
         setTimeout(() => {
             setIsVibrating(false);
         }, 200);
-
     };
 
-
+    const { title, description, imgUrl, url } = props;
 
     return (
-        <div className="my-3" >
-
-            <div className="card" data-tilt >
+        <div className="my-3">
+            <div className="card" data-tilt>
                 <img src={imgUrl} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{title}...</h5>
                     <p className="card-text">{description}...</p>
 
                     <div onClick={CopyUrl}>
-                        <ContentCopyIcon sx={{
-                            fontSize: '2.2rem',
-                            position: 'absolute',
-                            left: '5%',
-                            bottom: '5%',
-                            cursor: 'pointer',
-                            color: 'rgba(255, 255, 255, 0.6)',
-                        }} />
+                        <ContentCopyIcon
+                            sx={{
+                                fontSize: '2.2rem',
+                                position: 'absolute',
+                                left: '5%',
+                                bottom: '5%',
+                                cursor: 'pointer',
+                                color: 'rgba(255, 255, 255, 0.6)',
+                            }}
+                        />
                     </div>
 
-                    {/* <a  target='_blank' rel="noreferrer" className="btn btn-sm btn-dark" >Read More</a> */}
-                    <Button variant="contained" href={url} target='_blank' sx={
-                        {
+                    <Button
+                        variant="contained"
+                        href={url}
+                        target="_blank"
+                        sx={{
                             position: 'absolute',
                             bottom: '5%',
                             margin: 'auto',
                             left: '28%',
                             color: 'white',
                             borderRadius: '15px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.6)'
-                        }
-                    }>Read More</Button>
+                            backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                        }}
+                    >
+                        Read More
+                    </Button>
 
-                    <div  >
-                        {iconChanged ? ( // If iconChanged state is true, show ThumbUpAltIcon
+                    <div>
+                        {iconChanged ? (
                             <ThumbUpAltIcon
                                 onClick={handleClick}
                                 sx={{
@@ -87,7 +89,7 @@ const NewsItem = (props) => {
                                     transform: isVibrating ? 'rotate(30deg)' : 'rotate(0)',
                                 }}
                             />
-                        ) : ( // If iconChanged state is false, show ThumbUpOutlinedIcon
+                        ) : (
                             <ThumbUpOutlinedIcon
                                 onClick={handleClick}
                                 sx={{
@@ -99,28 +101,28 @@ const NewsItem = (props) => {
                                     transition: isVibrating ? 'transform 0.1s ease-in-out' : 'none',
                                     transform: isVibrating ? 'rotate(-30deg)' : 'rotate(0)',
                                     color: 'rgba(255, 255, 255, 0.6)',
-
                                 }}
                             />
                         )}
                     </div>
 
                     {showAlert && (
-                        <Alert className="alert" sx={{
-
-                            marginTop: '27px',
-                            marginBottom: '0px',
-                            color: 'green',
-                            backgroundColor: ' rgba(255, 255, 255, 1)',
-                            fontWeight: '600'
-                        }} >Link Copied</Alert>
-
+                        <Alert
+                            className="alert"
+                            sx={{
+                                marginTop: '27px',
+                                marginBottom: '0px',
+                                color: 'green',
+                                backgroundColor: ' rgba(255, 255, 255, 1)',
+                                fontWeight: '600',
+                            }}
+                        >
+                            Link Copied
+                        </Alert>
                     )}
                 </div>
             </div>
-
         </div>
-
     );
 };
 
