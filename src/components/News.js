@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import PropTypes from 'prop-types'
-import NewsItems from './newsItems.css';
+import './newsItems.css';
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300&family=Poppins:wght@400;500;600;700&display=swap');
 </style>
@@ -70,16 +70,6 @@ export class News extends Component {
 
 
     render() {
-        const { articles } = this.state;
-
-        // Check if articles is undefined or empty
-        // if (!articles || articles.length === 0) {
-        //     return (
-        //         <div className='container box my-3'>
-        //             <p>No articles available</p>
-        //         </div>
-        //     );
-        // }
         return (
 
             <div className='container box my-3'>

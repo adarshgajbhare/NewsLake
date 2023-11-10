@@ -19,7 +19,7 @@ export default class App extends Component {
     const { selectedCountry } = this.state;
 
     return (
-      <BrowserRouter basename='/FlashFeedNews'>
+      <BrowserRouter >
         <div>
           <Navbar
             country={selectedCountry}
@@ -51,7 +51,7 @@ export default class App extends Component {
               element={<News key={"technology"} pageSize={9} country={selectedCountry} category="technology" />}
             />
             <Route
-              path="/general"
+              path="/"
               element={<News key={"general"} pageSize={9} country={selectedCountry} category="general" />}
             />
           </Routes>

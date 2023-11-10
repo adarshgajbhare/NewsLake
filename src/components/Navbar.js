@@ -53,7 +53,6 @@ export class Navbar extends Component {
                                             label="Country"
                                             onChange={handleCountryChange}
                                             sx={{
-                                                borderRadius: 4,
                                                 backgroundColor: 'rgba(255, 255, 255, 0.6)',
                                                 color: 'black',
                                                 fontSize: '1rem',
@@ -62,7 +61,6 @@ export class Navbar extends Component {
                                                 position: 'absolute',
                                                 top: '8px',
                                                 left: '10px',
-                                                borderRadius: 8, // Adding border radius
                                                 background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', // Gradient background
                                                 '& .MuiSelect-select': {
                                                     borderRadius: 8, // Adding border radius to the select element
