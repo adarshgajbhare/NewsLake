@@ -10,7 +10,7 @@ const App = () => {
     setSelectedCountry(country);
   };
   return (
-    <BrowserRouter basename='/https://newslake.vercel.app/'>
+    <BrowserRouter basename=''>
       <div>
         <Navbar country={selectedCountry} onCountryChange={handleCountryChange} />
         <Routes>
