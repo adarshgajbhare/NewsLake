@@ -10,7 +10,7 @@ const App = () => {
     setSelectedCountry(country);
   };
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/https://flareflashfeed.netlify.app'>
       <div>
         <Navbar country={selectedCountry} onCountryChange={handleCountryChange} />
         <Routes>
