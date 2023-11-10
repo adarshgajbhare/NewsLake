@@ -5,7 +5,7 @@ import './newsItems.css';
 
 const News = (props) => {
     const [articles, setArticles] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
 
