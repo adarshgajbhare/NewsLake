@@ -24,30 +24,34 @@ const News = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const apiUrl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f6fe91ece8e241309b14406306ae92f8&pageSize=${props.pageSize}`;
-                const data = await fetch(apiUrl);
-                const parseData = await data.json();
-
-                if (parseData.articles.length === 0) {
-                    // If no data is returned, load default data from the JSON file
-                    const defaultData = require('./defaultData.json');
-                    setArticles(defaultData.articles);
-                    setTotalResults(defaultData.totalResults);
-                } else {
-                    // Otherwise, set the fetched data
-                    setArticles(parseData.articles);
-                    setTotalResults(parseData.totalResults);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            } finally {
-                setLoading(false);
+          try {
+            const apiUrl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=f6fe91ece8e241309b14406306ae92f8&pageSize=${props.pageSize}`;
+            const data = await fetch(apiUrl);
+            const parseData = await data.json();
+      
+            if (parseData.articles.length === 0) {
+              // If no data is returned, load default data from the JSON file
+              const defaultData = require('./defaultData.json');
+              setArticles(defaultData.articles);
+              setTotalResults(defaultData.totalResults);
+            } else {
+              // Otherwise, set the fetched data
+              setArticles(parseData.articles);
+              setTotalResults(parseData.totalResults);
             }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            // If there's an error, load default data from the JSON file
+            const defaultData = require('./defaultData.json');
+            setArticles(defaultData.articles);
+            setTotalResults(defaultData.totalResults);
+          } finally {
+            setLoading(false);
+          }
         };
-
+      
         fetchData();
-    }, [props.country, props.category, props.pageSize]);
+      }, [props.country, props.category, props.pageSize]);
 
 
     const handlePrev = async () => {
