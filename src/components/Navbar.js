@@ -16,8 +16,8 @@ const Navbar = (props) => {
             <nav className="navbar navbar-expand-lg" id="glass">
                 <div className="container-fluid">
                     <img src={logo} alt="" />
-                    <Link className="navbar-brand" to="/">FLASH</Link>
-                    <Link className="navbar-brand" id="h2-feed" to="/">FEED</Link>
+                    <Link className="navbar-brand" to="/">NEWSLAKE</Link>
+                    {/* <Link className="navbar-brand" id="h2-feed" to="/">FEED</Link> */}
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
